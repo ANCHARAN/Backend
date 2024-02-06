@@ -17,7 +17,7 @@ function middleware_validator(req,res,next)
         next();
 }
 
-app.post('/addentry',middleware_validator,async function(req,res,next)
+app.post('https://demo-app-v4ik.onrender.com/addentry',middleware_validator,async function(req,res,next)
 {
     const bodyfromreact=req.body;
     const result=await table_entitytoacesssentiredata.create({
@@ -38,14 +38,14 @@ app.post('/addentry',middleware_validator,async function(req,res,next)
         res.status(200).json({msg:"Added Entry"});
 })
 
-app.get('/displayentry',async function(req,res,next)
-{
-    const result=await table_entitytoacesssentiredata.find({})
-    if(result)
-    res.status(200).json({result});
-})
+// app.get('/displayentry',async function(req,res,next)
+// {
+//     const result=await table_entitytoacesssentiredata.find({})
+//     if(result)
+//     res.status(200).json({result});
+// })
 
-app.post('/mutual', async (req, res) => {
+app.post('https://demo-app-v4ik.onrender.com/mutual', async (req, res) => {
     const currentUser = req.body;
     const interestedUsers = await table_entitytoacesssentiredata.find({
       name: { $in: currentUser.interestedPeople },
@@ -81,7 +81,7 @@ app.post('/mutual', async (req, res) => {
     res.json({ msg:"Mutual Preferences Updated" });  
 });
 
-app.post('/matchPreferences', async (req, res) => {
+app.post('https://demo-app-v4ik.onrender.com/matchPreferences', async (req, res) => {
 const currentUser = req.body;  
 const matchingEntries = await table_entitytoacesssentiredata.find({
       _id: { $ne: currentUser._id },
