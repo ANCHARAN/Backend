@@ -81,7 +81,7 @@ app.post('/mutual', async (req, res) => {
     res.json({ msg:"Mutual Preferences Updated" });  
 });
 
-app.post('matchPreferences', async (req, res) => {
+app.post('/matchPreferences', async (req, res) => {
 const currentUser = req.body;  
 const matchingEntries = await table_entitytoacesssentiredata.find({
       _id: { $ne: currentUser._id },
